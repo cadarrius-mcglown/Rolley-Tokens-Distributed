@@ -40,10 +40,10 @@ public class PlayerMovementtwonew : MonoBehaviour {
 		input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 
 
-		if(rigidbody.velocity.magnitude < maxSpeed)
+		if(GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
 		{
 
-			rigidbody.AddForce(input * moveSpeed);
+			GetComponent<Rigidbody>().AddForce(input * moveSpeed);
 			Debug.Log(input+"Fs");
 		}
 

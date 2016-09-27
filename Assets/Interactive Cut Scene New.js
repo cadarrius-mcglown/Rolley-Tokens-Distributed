@@ -42,7 +42,7 @@ function FirstReponse()
 	if(Input.GetKeyDown("e"))
 	{
 		ActionOne();
-		this.gameObject.animation.CrossFadeQueued("cameraanim", 1, QueueMode.PlayNow);
+		this.gameObject.GetComponent.<Animation>().CrossFadeQueued("cameraanim", 1, QueueMode.PlayNow);
 	}
 }
 
@@ -73,5 +73,5 @@ function ActionOne()
 
 function SecondReponse()
 {
-	this.gameObject.animation.CrossFadeQueued("Animation3", 1, QueueMode.PlayNow);
+	this.gameObject.GetComponent.<Animation>().CrossFadeQueued("Animation3", 1, QueueMode.PlayNow);
 }

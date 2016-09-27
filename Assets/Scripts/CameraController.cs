@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 		plane = GameObject.FindWithTag ("Player");
 		
 		mCamera = new WebCamTexture ();
-		plane.renderer.material.mainTexture = mCamera;
+		plane.GetComponent<Renderer>().material.mainTexture = mCamera;
 		mCamera.Play ();
 		
 	}

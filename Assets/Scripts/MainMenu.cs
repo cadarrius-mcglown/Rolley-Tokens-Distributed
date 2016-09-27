@@ -10,8 +10,8 @@ public class MainMenu : MonoBehaviour {
 
 	void PlaySound()
 	{
-		audio.clip = mainMenuSong;
-		audio.Play();
+		GetComponent<AudioSource>().clip = mainMenuSong;
+		GetComponent<AudioSource>().Play();
 	}
 
 //	void onMouseDown()
@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour {
 	{
 		screenHeight = Screen.height;
 		screenWidth = Screen.width;
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 	}
 
 //	void Update(){

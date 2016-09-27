@@ -37,9 +37,9 @@ public class PlayerMovementFollower : MonoBehaviour {
 			input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 		}
 
-		if(rigidbody.velocity.magnitude < maxSpeed)
+		if(GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
 		{
-			rigidbody.AddForce(input * moveSpeed);
+			GetComponent<Rigidbody>().AddForce(input * moveSpeed);
 		}
 
 		if (transform.position.y < -2)
@@ -82,8 +82,8 @@ public class PlayerMovementFollower : MonoBehaviour {
 
 	void PlaySound(int clip)
 	{
-		audio.clip = audioClip [clip];
-		audio.Play();
+		GetComponent<AudioSource>().clip = audioClip [clip];
+		GetComponent<AudioSource>().Play();
 	}
 
 	void Die()

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : NetworkBehaviour
+{
 
 	// Count
 	public int currentScore;
@@ -36,8 +38,12 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
+        if (!isLocalPlayer)
+        {
+            return;
+        }
 
-		if (Input.GetKeyDown (KeyCode.Escape)) 
+        if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
 			if(!showPauseScreen)
 				showPauseScreen = true;
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour {
 			{
 				startTime = 0;
 				showLoseScreen = true;
-				GameObject.Find ("Sphere Player").rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+				GameObject.Find ("Sphere Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
 				//Application.LoadLevel("MainMenu");
 			}
 		}

@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{6090710D-9611-7B76-50A7-B93BBFF22E61}") = "Rolley-Tokens-Distributed", "Assembly-CSharp.csproj", "{456D9DAE-FD9A-1235-B0BD-213A230CF37A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{456D9DAE-FD9A-1235-B0BD-213A230CF37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456D9DAE-FD9A-1235-B0BD-213A230CF37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456D9DAE-FD9A-1235-B0BD-213A230CF37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456D9DAE-FD9A-1235-B0BD-213A230CF37A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

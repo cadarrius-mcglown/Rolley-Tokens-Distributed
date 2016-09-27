@@ -13,7 +13,7 @@ public class Trap : MonoBehaviour {
 	{
 		while(true)
 		{
-			animation.Play ();
+			GetComponent<Animation>().Play ();
 			yield return new WaitForSeconds(3f);
 		}
 	}

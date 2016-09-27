@@ -33,12 +33,12 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		if (Application.platform == RuntimePlatform.Android) 
 		{
-			rigidbody.drag = 1;
+			GetComponent<Rigidbody>().drag = 1;
 		} else {
-			rigidbody.drag = 0;
+			GetComponent<Rigidbody>().drag = 0;
 		}
 
-		goal.collider.isTrigger = false; //goal can not be used until tokens are collected
+		goal.GetComponent<Collider>().isTrigger = false; //goal can not be used until tokens are collected
 		goalPosition = goal.transform.position;
 		spawn = transform.position;
 		manager = manager.GetComponent<GameManager>();
@@ -51,11 +51,11 @@ public class PlayerMovement : MonoBehaviour {
 		{
 
 			input = new Vector3 (Input.acceleration.x*3, 0, (Input.acceleration.y +.5f )*3);
-			rigidbody.AddForce (input * moveSpeed);
+			GetComponent<Rigidbody>().AddForce (input * moveSpeed);
 			Debug.Log(input);
 		}else {
 			input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
-			rigidbody.AddForce (input * (moveSpeed+12f));
+			GetComponent<Rigidbody>().AddForce (input * (moveSpeed+12f));
 		}
 
 		if (transform.position.y < -2)
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 			//if all tokens are collected
 			if(manager.tokenCount == manager.totalTokenCount)
 			{
-				goal.collider.isTrigger = true; //Goal can be entered now
+				goal.GetComponent<Collider>().isTrigger = true; //Goal can be entered now
 				PlaySound (4); //flame/ rocket sound
 				Instantiate(goalFX, goalPosition, Quaternion.Euler(270,0,0));
 			}
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (other.transform.tag == "Goal")
 		{
 			//Freeze the player from moving because the level has been won!
-			rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+			GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
 			PlaySound (2);
 			manager.CompleteLevel();
 		}
@@ -110,8 +110,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	void PlaySound(int clip)
 	{
-		audio.clip = audioClip [clip];
-			audio.Play ();
+		GetComponent<AudioSource>().clip = audioClip [clip];
+			GetComponent<AudioSource>().Play ();
 		
 	}
 
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (manager.lives == 1)
 		{
 			Debug.Log ("Lost!");
-			rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+			GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
 			manager.LoseLevel();
 			//Application.LoadLevel(0);
 		}else 
@@ -130,8 +130,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		//Handheld.Vibrate ();
 		Instantiate(enemyParticles, transform.position, Quaternion.Euler(270,0,0));
-		rigidbody.velocity = Vector3.zero;
-		rigidbody.angularVelocity = Vector3.zero;
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
+		GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 		transform.position = spawn;
 	}
 
