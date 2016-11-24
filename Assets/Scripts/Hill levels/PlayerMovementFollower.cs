@@ -5,7 +5,7 @@ public class PlayerMovementFollower : MonoBehaviour {
 
 	public bool isAndroid;
 
-	public GameManager manager;
+	
 	public float moveSpeed;
 
 //Particles
@@ -24,7 +24,7 @@ public class PlayerMovementFollower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		spawn = transform.position;
-		manager = manager.GetComponent<GameManager>();
+		//manager = manager.GetComponent<GameManager>();
 	}
 
 
@@ -70,13 +70,13 @@ public class PlayerMovementFollower : MonoBehaviour {
 			PlaySound (1);
 			Destroy(other.gameObject);
 			Instantiate(tokenParticles, transform.position, Quaternion.Euler(270,0,0));
-			manager.tokenCount += 1;
+			//manager.tokenCount += 1;
 
 		}
 		if (other.transform.tag == "Goal")
 		{
 			PlaySound (2);
-			manager.CompleteLevel();
+		//	manager.CompleteLevel();
 		}
 	}
 
